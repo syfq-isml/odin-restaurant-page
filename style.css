@@ -89,12 +89,17 @@ header {
     list-style: none;
 
     display: flex;
-
-    padding: 20px;
 }
 
 .header-bottom ul li {
-    margin: 0 30px;
+    height: 100%;
+    
+    padding: 20px 30px;
+}
+
+.header-bottom ul li:hover {
+    background-color: rgba(104, 104, 104, 0.438);
+    cursor: pointer;
 }
 
 
@@ -149,6 +154,11 @@ main {
     margin-bottom: 20px;
     margin-top: auto;
 
+}
+
+.text-container button:hover {
+    cursor: pointer;
+    background-color: rgb(248, 47, 47);
 }
 
 .main-container img {
