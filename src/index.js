@@ -1,3 +1,6 @@
+import { menu } from './menu';
+
+
 console.log('Initialising...');
 
 const contentWrapper = document.querySelector('#content');
@@ -107,10 +110,30 @@ contentWrapper.append(footer);
 
 //--- EVENT LISTENERS ---
 
-homeBtn.addEventListener('click', sayHello);
-menuBtn.addEventListener('click', sayHello);
+homeBtn.addEventListener('click', handleHome);
+menuBtn.addEventListener('click', handleMenu);
 orderBtn.addEventListener('click', sayHello);
 contactBtn.addEventListener('click', sayHello);
+
+function handleHome() {
+    footer.remove();
+
+    if (menu.main) { menu.main.remove(); };
+    // else if (order.main) {order.main.remove();};
+    // else if (contact.main) {contact.main.remove();};
+
+    contentWrapper.append(main);
+    contentWrapper.append(footer);
+}
+
+function handleMenu() {
+    main.remove();
+    footer.remove();
+    menu.addMenu();
+    contentWrapper.append(menu.main);
+    contentWrapper.append(footer);
+}
+
 
 function sayHello() {
     console.log('hello');
