@@ -2,6 +2,10 @@ const menu = (function() {
 
     const main = document.createElement('main');
 
+    const firstTime = true;
+
+    const exist = false;
+
     const addMenu = () => {
 
     const menuContainer = document.createElement('div');
@@ -64,7 +68,7 @@ const menu = (function() {
     main.append(menuContainer);
     };
 
-    return {main, addMenu};
+    return {main, firstTime, exist, addMenu};
 
 })();
 

@@ -1,4 +1,5 @@
 import { menu } from './menu';
+import { contact } from './contact';
 
 
 console.log('Initialising...');
@@ -112,26 +113,49 @@ contentWrapper.append(footer);
 
 homeBtn.addEventListener('click', handleHome);
 menuBtn.addEventListener('click', handleMenu);
-orderBtn.addEventListener('click', sayHello);
-contactBtn.addEventListener('click', sayHello);
+orderBtn.addEventListener('click', handleMenu);
+contactBtn.addEventListener('click', handleContact);
+
+
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
 
 function handleHome() {
-    footer.remove();
 
-    if (menu.main) { menu.main.remove(); };
-    // else if (order.main) {order.main.remove();};
-    // else if (contact.main) {contact.main.remove();};
+    removeAllChildNodes(contentWrapper);
 
+    contentWrapper.append(header);
     contentWrapper.append(main);
     contentWrapper.append(footer);
 }
 
 function handleMenu() {
-    main.remove();
-    footer.remove();
-    menu.addMenu();
+    
+    removeAllChildNodes(contentWrapper);
+
+    if (menu.firstTime) menu.addMenu(); 
+
+    contentWrapper.append(header);
     contentWrapper.append(menu.main);
     contentWrapper.append(footer);
+
+    menu.firstTime = false;
+}
+
+function handleContact() {
+
+    removeAllChildNodes(contentWrapper);
+
+    if (contact.firstTime) contact.addContact();
+
+    contentWrapper.append(header);
+    contentWrapper.append(contact.main);
+    contentWrapper.append(footer);
+
+    contact.firstTime = false;
 }
 
 
